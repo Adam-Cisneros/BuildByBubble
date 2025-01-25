@@ -167,4 +167,4 @@ MonoBehaviour:
   accelerationRate: 2
   forcedYVelocity: -5
   isStuck: 0
-  dirtyBubbleSprite: {fileID: 21300000, guid: c84fdbb459aaf424aa03d4a2c991bf87, type: 3}
+  dirtyBubbleSprite: {fileID: 21300000, guid: 634f4dcb6425e9d46b4531668a626ea0, type: 3}

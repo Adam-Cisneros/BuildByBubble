@@ -18,12 +18,11 @@ public class BubbleController : MonoBehaviour
     private float tempYVelocity;
     [SerializeField] private float forcedYVelocity;
 
-
-
     //StuckBubble
     public bool isStuck;
     [SerializeField] Sprite dirtyBubbleSprite;
     private List<Collision2D> connectedList = new List<Collision2D>();
+
 
     void Start()
     {
@@ -39,14 +38,16 @@ public class BubbleController : MonoBehaviour
             getMovement();
         }
 
-
-        //Change later to not call all the time
         foreach (var col in connectedList)
         {
             if (col.gameObject.CompareTag("DirtyBubble"))
             {
                 convertToDirty();
             }
+            //if (col.gameObject.CompareTag("DirtyBubble") || col.gameObject.tag == "DirtySurface")
+            //{
+            //    convertToDirty();
+            //}
         }
 
     }
@@ -78,32 +79,32 @@ public class BubbleController : MonoBehaviour
             rb2d.velocity = new Vector2(movement, tempYVelocity);
         }
 
-
         movement = currentHorizontalInput * bubbleSpeed;
     }
 
 
     void OnCollisionEnter2D(Collision2D col)
     {
-
         //Create fixed joint with sticky surface when collide with sticky surface
         if (col.gameObject.tag == "StickySurface")
         {
+
             createFixedJoint(col);
         }
 
         //Create hinge with bubble when collide
         if (col.gameObject.tag == "DirtySurface")
         {
-            convertToDirty();
+
             createFixedJoint(col);
+            convertToDirty();
         }
 
         //Create hinge with bubble when collide
         if (col.gameObject.tag == "DirtyBubble")
         {
-            convertToDirty();
             createHingeJoint(col);
+            convertToDirty();
         }
 
         //Create hinge with bubble when collide with other healthy bubble
@@ -121,10 +122,9 @@ public class BubbleController : MonoBehaviour
 
         fixedJoint.connectedBody = col.rigidbody;
 
-        fixedJoint.breakForce = 100000f;
-        fixedJoint.breakTorque = 100000f;
+        fixedJoint.breakForce = 10000f;
+        fixedJoint.breakTorque = 10000f;
 
-        Debug.Log("FixedJoint2D created and attached to " + col.gameObject.name);
     }
 
     private void createHingeJoint(Collision2D col)
@@ -138,8 +138,8 @@ public class BubbleController : MonoBehaviour
         hingeJoint.breakForce = 1000f;
         hingeJoint.breakTorque = 1000f;
 
-        //Debug.Log("HingeJoint2D created and attached to " + col.gameObject.name);
     }
+
 
     private void convertToDirty()
     {
@@ -151,9 +151,9 @@ public class BubbleController : MonoBehaviour
     private void FixedUpdate()
     {
         //Move by collected movement
-
         rb2d.velocity = new Vector2(movement, rb2d.velocity.y);
 
     }
+
 
 }
