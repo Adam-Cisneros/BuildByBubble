@@ -26,10 +26,8 @@ public class GenerateBubbles : MonoBehaviour
 
     private IEnumerator bubbleGameLoop()
     {
-        Debug.Log("Entered game loop");
         while (BubbleController.numBubbles < maxGeneratedBubbles)
         {
-            Debug.Log("Started routine");
             yield return StartCoroutine(createBubble());
             yield return new WaitForSeconds(bubbleSpawnDelay);
         }
@@ -38,7 +36,6 @@ public class GenerateBubbles : MonoBehaviour
 
     private IEnumerator createBubble()
     {
-        Debug.Log("Created bubble");
         GameObject bubble = Instantiate(bubblePrefab, bubbleSpawnPoint.position, Quaternion.identity);
         yield return new WaitUntil(() => bubble.GetComponent<BubbleController>().isStuck);
     }
