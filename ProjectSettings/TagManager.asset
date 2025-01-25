@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - StickySurface
+  - HealthyBubble
   layers:
   - Default
   - TransparentFX
@@ -38,6 +40,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 2375412689
+    locked: 0
+  - name: Border
+    uniqueID: 3880860645
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
