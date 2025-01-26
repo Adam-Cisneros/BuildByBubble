@@ -20,14 +20,16 @@ public class SFXManager : MonoBehaviour
 
     void Start()
     {
+
         audioSource = gameObject.AddComponent<AudioSource>();
         musicSource = gameObject.AddComponent<AudioSource>();
-
+        StopLoopingMusic();
         InitializeSFXDictionary();
     }
 
     void Awake()
     {
+
         if (Instance == null)
         {
             Instance = this;

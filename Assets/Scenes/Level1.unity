@@ -2001,7 +2001,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 43d060367daf2d246a3a775d3508c166, type: 3}
+  m_Sprite: {fileID: 655644383, guid: d6ba4b51f700b4c399557a791a497fd6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
@@ -2152,7 +2152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubbleController: {fileID: 0}
-  maxGeneratedBubbles: 10
+  maxGeneratedBubbles: 2
   bubblePrefab: {fileID: 2724066605408935107, guid: 1a104470f47f5184dafd885aa74e4e0d, type: 3}
   bubbleSpawnPoint: {fileID: 1774975147}
   bubbleSpawnDelay: 0.5
