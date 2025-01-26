@@ -16,10 +16,14 @@ public class GenerateBubbles : MonoBehaviour
     //Text UI
     [SerializeField] TextMeshProUGUI bubblesLeftText;
 
+    //Indicate Done
+    static public bool bubblePhaseOver;
+
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(bubbleGameLoop());
+        bubblePhaseOver = false;
+
         bubblesLeftText.text = $"{maxGeneratedBubbles}";
     }
 
@@ -29,20 +33,20 @@ public class GenerateBubbles : MonoBehaviour
         
     }
 
-    private IEnumerator bubbleGameLoop()
+    public IEnumerator bubbleGameLoop()
     {
-        yield return new WaitForSeconds(1f);
+
         while (BubbleController.numBubbles < maxGeneratedBubbles)
         {
             yield return StartCoroutine(createBubble());
             yield return new WaitForSeconds(bubbleSpawnDelay);
         }
-
+        bubblePhaseOver = true;
     }
 
     private IEnumerator createBubble()
     {
-        GameObject bubble = Instantiate(bubblePrefab, bubbleSpawnPoint.position, Quaternion.identity);
+        GameObject bubble = Instantiate(bubblePrefab, bubbleSpawnPoint.position - new Vector3(0f, 0.5f, 0f), Quaternion.identity);
         yield return new WaitUntil(() => bubble.GetComponent<BubbleController>().isStuck);
         bubblesLeftText.text = $"{maxGeneratedBubbles - BubbleController.numBubbles}";
     }
