@@ -23,6 +23,7 @@ public class GenerateBubbles : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        dropper.GetComponent<Animator>().enabled = false;
         bubblePhaseOver = false;
         bubblesLeftText.text = $"{maxGeneratedBubbles}";
     }
@@ -35,11 +36,10 @@ public class GenerateBubbles : MonoBehaviour
 
     public IEnumerator bubbleGameLoop()
     {
-
+        dropper.GetComponent<Animator>().enabled = true;
         while (BubbleController.numBubbles < maxGeneratedBubbles)
         {
             yield return StartCoroutine(createBubble());
-            yield return new WaitForSeconds(bubbleSpawnDelay);
         }
         bubblePhaseOver = true;
     }
@@ -47,6 +47,7 @@ public class GenerateBubbles : MonoBehaviour
     private IEnumerator createBubble()
     {
         dropper.GetComponent<Animator>().Play("BBBDropperAni", -1, 0f);
+        yield return new WaitForSeconds(bubbleSpawnDelay);
         GameObject bubble = Instantiate(bubblePrefab, bubbleSpawnPoint.position - new Vector3(0f, 0.5f, 0f), Quaternion.identity);
         yield return new WaitUntil(() => bubble.GetComponent<BubbleController>().isStuck);
         bubblesLeftText.text = $"{maxGeneratedBubbles - BubbleController.numBubbles}";
