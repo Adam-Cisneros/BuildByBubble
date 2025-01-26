@@ -40,14 +40,14 @@ public class BubbleController : MonoBehaviour
 
         foreach (var col in connectedList)
         {
-            if (col.gameObject.CompareTag("DirtyBubble"))
-            {
-                convertToDirty();
-            }
-            //if (col.gameObject.CompareTag("DirtyBubble") || col.gameObject.tag == "DirtySurface")
+            //if (col.gameObject.CompareTag("DirtyBubble"))
             //{
             //    convertToDirty();
             //}
+            if (col.gameObject.CompareTag("DirtyBubble") || col.gameObject.tag == "DirtySurface")
+            {
+                convertToDirty();
+            }
         }
 
     }
@@ -116,7 +116,7 @@ public class BubbleController : MonoBehaviour
 
     private void createFixedJoint(Collision2D col)
     {
-        connectedList.Add(col);
+
         isStuck = true;
         FixedJoint2D fixedJoint = gameObject.AddComponent<FixedJoint2D>();
 
