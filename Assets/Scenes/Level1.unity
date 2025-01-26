@@ -7463,6 +7463,7 @@ GameObject:
   - component: {fileID: 1319026470}
   - component: {fileID: 1319026469}
   - component: {fileID: 1319026468}
+  - component: {fileID: 1319026471}
   m_Layer: 0
   m_Name: PlayerGoal
   m_TagString: Goal
@@ -7583,6 +7584,27 @@ Transform:
   - {fileID: 1015066209}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1319026471
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319026467}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 31d0ba5c3e8d1441c8ffbf33bf890247, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1335017733
 GameObject:
   m_ObjectHideFlags: 0
@@ -7945,6 +7967,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1774975147}
   - component: {fileID: 1774975146}
+  - component: {fileID: 1774975148}
   m_Layer: 0
   m_Name: BubbleSpawnPoint
   m_TagString: Untagged
@@ -7993,7 +8016,7 @@ SpriteRenderer:
   m_SortingLayerID: -1339826103
   m_SortingLayer: 1
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 140473acf7ee73449a6fc6eec81ace95, type: 3}
+  m_Sprite: {fileID: 639381399, guid: 9879deb1451d649f4a8a2324580985c5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -8019,6 +8042,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1774975148
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774975145}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a04b0463436594494993788f4a763bf4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1943884902
 GameObject:
   m_ObjectHideFlags: 0

@@ -4843,6 +4843,7 @@ GameObject:
   - component: {fileID: 940494933075896416}
   - component: {fileID: 8847432878617586389}
   - component: {fileID: 4003572465002474824}
+  - component: {fileID: 291328368960470089}
   m_Layer: 6
   m_Name: Bubble
   m_TagString: HealthyBubble
@@ -5000,3 +5001,25 @@ MonoBehaviour:
   bubbleCollisionPS: {fileID: 5298374306834931189}
   isStuck: 0
   dirtyBubbleSprite: {fileID: 21300000, guid: 634f4dcb6425e9d46b4531668a626ea0, type: 3}
+  healthyBubbleSprite: {fileID: 21300000, guid: 91a16a4292eea524394a59adca782f11, type: 3}
+--- !u!95 &291328368960470089
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2724066605408935107}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3f682e2a6b0c6455c831cf5707f82c19, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
