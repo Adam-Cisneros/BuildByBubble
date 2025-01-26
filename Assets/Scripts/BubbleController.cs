@@ -23,18 +23,17 @@ public class BubbleController : MonoBehaviour
     [SerializeField] ParticleSystem bubbleCollisionPS;
     private int numCollisions = 0;
 
-
     //StuckBubble
     public bool isStuck;
     [SerializeField] private Sprite dirtyBubbleSprite;
     [SerializeField] private Sprite healthyBubbleSprite;
-    private List<Collision2D> connectedList = new List<Collision2D>();
-
+    private List<GameObject> chain;
 
     void Start()
     {
         numBubbles += 1;
         isStuck = false;
+        chain = new List<GameObject>();
     }
 
     void Update()
@@ -45,31 +44,11 @@ public class BubbleController : MonoBehaviour
             getMovement();
         }
 
-        //foreach (var col in connectedList)
-        //{
-        //    if (col.gameObject.CompareTag("DirtyBubble"))
-        //    {
-        //        convertToDirty();
-        //    }
-        //}
-
-        HingeJoint hingeJoint = gameObject.GetComponent<HingeJoint>();
-        if (hingeJoint != null)
+        if (gameObject.tag == "DirtyBubble")
         {
-            GameObject connectedObject = hingeJoint.connectedBody.gameObject;
-            if (connectedObject.tag == "DirtySurface" || connectedObject.tag == "DirtyBubble")
+            foreach (var elem in chain)
             {
-                convertToDirty();
-            }
-        }
-
-        FixedJoint fixedJoint = gameObject.GetComponent<FixedJoint>();
-        if (fixedJoint != null)
-        {
-            GameObject connectedObject = fixedJoint.connectedBody.gameObject;
-            if (connectedObject.tag == "DirtySurface" || connectedObject.tag == "DirtyBubble")
-            {
-                convertToDirty();
+                elem.GetComponent<BubbleController>().convertToDirty();
             }
         }
     }
@@ -122,16 +101,22 @@ public class BubbleController : MonoBehaviour
         //Create hinge with bubble when collide
         if (col.gameObject.tag == "DirtySurface")
         {
-
             createFixedJoint(col);
-            convertToDirty();
+            chain.Add(gameObject);
+            foreach (var elem in chain)
+            {
+                elem.GetComponent<BubbleController>().convertToDirty();
+            }
         }
 
         //Create hinge with bubble when collide
         if (col.gameObject.tag == "DirtyBubble")
         {
             createHingeJoint(col);
-            convertToDirty();
+            foreach (var elem in chain)
+            {
+                elem.GetComponent<BubbleController>().convertToDirty();
+            }
         }
 
         //Create hinge with bubble when collide with other healthy bubble
@@ -140,6 +125,8 @@ public class BubbleController : MonoBehaviour
             SFXManager.Instance.PlaySFX("HealthyBubbleSFX");
             playCleanCollisionPS();
             createHingeJoint(col);
+            chain.Add(col.gameObject);
+            chain.Add(gameObject);
         }
     }
 
@@ -153,7 +140,6 @@ public class BubbleController : MonoBehaviour
 
     private void createFixedJoint(Collision2D col)
     {
-        //connectedList.Add(col);
         isStuck = true;
         FixedJoint2D fixedJoint = gameObject.AddComponent<FixedJoint2D>();
 
@@ -166,7 +152,6 @@ public class BubbleController : MonoBehaviour
 
     private void createHingeJoint(Collision2D col)
     {
-        //connectedList.Add(col);
         isStuck = true;
         HingeJoint2D hingeJoint = gameObject.AddComponent<HingeJoint2D>();
 
@@ -178,7 +163,7 @@ public class BubbleController : MonoBehaviour
     }
 
 
-    private void convertToDirty()
+    public void convertToDirty()
     {
         SFXManager.Instance.PlaySFX("DirtyBubbleSFX");
         gameObject.tag = "DirtyBubble";
@@ -197,3 +182,4 @@ public class BubbleController : MonoBehaviour
 
 
 }
+

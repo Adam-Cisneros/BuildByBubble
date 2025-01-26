@@ -73,7 +73,7 @@ public class SFXManager : MonoBehaviour
         {
             musicSource.clip = clip;
             musicSource.loop = true; 
-            musicSource.time = startTime; 
+            musicSource.time = startTime;
             musicSource.Play();
         }
         else

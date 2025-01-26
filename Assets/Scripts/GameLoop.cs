@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameLoop : MonoBehaviour
 {
+
+
     [SerializeField] private PhaseTitle phaseTitle;
     [SerializeField] private GenerateBubbles generateBubbles;
     [SerializeField] private GameObject playerPrefab;
@@ -25,11 +28,19 @@ public class GameLoop : MonoBehaviour
         StartCoroutine(MainGameLoop());   
     }
 
+
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKey(KeyCode.R))
+        {
+            SFXManager.Instance.StopLoopingMusic();
+            Scene currentScene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(currentScene.name);
+        }
     }
+
+
 
     private IEnumerator MainGameLoop()
     {
@@ -38,6 +49,7 @@ public class GameLoop : MonoBehaviour
 
         //Bubble Phase
         yield return StartCoroutine(phaseTitle.BlowupText());
+
         SFXManager.Instance.PlayLoopingMusic("CasualBubbleLoop", 1f);
         yield return new WaitForSeconds(1f);
         yield return StartCoroutine(generateBubbles.bubbleGameLoop());
