@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class GenerateBubbles : MonoBehaviour
 {
-    [SerializeField] private BubbleController bubbleController;
-
     //Generate Bubbles
     [SerializeField] int maxGeneratedBubbles;
     [SerializeField] GameObject bubblePrefab;

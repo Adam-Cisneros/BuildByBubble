@@ -69,6 +69,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!(col.gameObject.tag == "HealthyBubble") && !(goalReached))
         {
+            SFXManager.Instance.StopLoopingMusic();
             Scene currentScene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(currentScene.name);
         }
