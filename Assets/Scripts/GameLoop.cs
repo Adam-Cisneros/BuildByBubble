@@ -14,6 +14,8 @@ public class GameLoop : MonoBehaviour
     [SerializeField] private WinTitle winTitle;
     [SerializeField] private GameObject nextLevelButton;
 
+
+
     private bool isPositionLocked = true;
 
     // Start is called before the first frame update
@@ -36,14 +38,17 @@ public class GameLoop : MonoBehaviour
 
         //Bubble Phase
         yield return StartCoroutine(phaseTitle.BlowupText());
+        SFXManager.Instance.PlayLoopingMusic("CasualBubbleLoop", 1f);
         yield return new WaitForSeconds(1f);
         yield return StartCoroutine(generateBubbles.bubbleGameLoop());
+        SFXManager.Instance.StopLoopingMusic();
 
         //Player Phase
         phaseTitle.phaseTitleText.text = "Run By Bubble";
         yield return new WaitForSeconds(1f);
         yield return StartCoroutine(phaseTitle.BlowupText());
-        
+        SFXManager.Instance.PlayLoopingMusic("CasualRunLoop", 1f);
+
         SetGoalAlpha(1f);
 
         GameObject player = Instantiate(playerPrefab, playerSpawnPoint.position, Quaternion.identity);
@@ -62,10 +67,12 @@ public class GameLoop : MonoBehaviour
         player.GetComponent<PlayerController>().resetVelocity();
 
         yield return new WaitUntil(() => player.GetComponent<PlayerController>().goalReached);
+        SFXManager.Instance.StopLoopingMusic();
 
         //Player wins
         confettiPS.Play();
         yield return new WaitForSeconds(1f);
+        SFXManager.Instance.PlayLoopingMusic("BubbleBubbleBubbleLoop", 1f);
         nextLevelButton.SetActive(true);
         winTitle.StartShaking();
 

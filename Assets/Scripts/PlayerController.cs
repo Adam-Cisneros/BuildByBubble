@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
 
         if (isGrounded && Input.GetKeyDown(KeyCode.W))
         {
+            SFXManager.Instance.PlaySFX("JumpSFX");
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
         }
     }
@@ -58,6 +59,7 @@ public class PlayerController : MonoBehaviour
     {
         if (col.gameObject.tag == "Goal")
         {
+            SFXManager.Instance.PlaySFX("VictorySFX");
             goalReached = true;
         }
     }

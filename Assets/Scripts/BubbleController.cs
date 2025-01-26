@@ -114,6 +114,7 @@ public class BubbleController : MonoBehaviour
         //Create fixed joint with sticky surface when collide with sticky surface
         if (col.gameObject.tag == "StickySurface")
         {
+            SFXManager.Instance.PlaySFX("HealthyBubbleSFX");
             playCleanCollisionPS();
             createFixedJoint(col);
         }
@@ -121,6 +122,7 @@ public class BubbleController : MonoBehaviour
         //Create hinge with bubble when collide
         if (col.gameObject.tag == "DirtySurface")
         {
+
             createFixedJoint(col);
             convertToDirty();
         }
@@ -135,6 +137,7 @@ public class BubbleController : MonoBehaviour
         //Create hinge with bubble when collide with other healthy bubble
         if (col.gameObject.tag == "HealthyBubble")
         {
+            SFXManager.Instance.PlaySFX("HealthyBubbleSFX");
             playCleanCollisionPS();
             createHingeJoint(col);
         }
@@ -177,6 +180,7 @@ public class BubbleController : MonoBehaviour
 
     private void convertToDirty()
     {
+        SFXManager.Instance.PlaySFX("DirtyBubbleSFX");
         gameObject.tag = "DirtyBubble";
         spriteRenderer.sprite = dirtyBubbleSprite;
     }

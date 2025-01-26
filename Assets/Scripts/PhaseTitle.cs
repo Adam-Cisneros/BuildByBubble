@@ -10,6 +10,7 @@ public class PhaseTitle : MonoBehaviour
     [SerializeField] float currencyTextMinSize;
     public string titleText = "Build by Bubble";
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +30,7 @@ public class PhaseTitle : MonoBehaviour
         yield return new WaitForSeconds(1f);
         phaseTitleText.enabled = true;
         yield return new WaitForSeconds(0.2f);
+        SFXManager.Instance.PlaySFX("PhaseStartSFX");
 
         //Make text bigger
         float elapsedTime = 0f;
@@ -43,6 +45,7 @@ public class PhaseTitle : MonoBehaviour
 
             yield return null;
         }
+
 
         yield return new WaitForSeconds(0.8f);
 
