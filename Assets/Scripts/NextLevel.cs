@@ -38,7 +38,8 @@ public class NextLevel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if (SceneManager.GetActiveScene().name == lastLevelName)
         {
             SFXManager.Instance.StopLoopingMusic();
-            Debug.Log("Do something special");
+            LoadNextLevel();
+            Time.timeScale = 0f;
         }
         else
         {
