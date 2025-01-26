@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class BubbleController : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class BubbleController : MonoBehaviour
 
     public static int numBubbles = 0;
 
-    //Player Movement
+    //Bubble Movement
     float currentHorizontalInput = 0f;
     private float movement = 0f;
     [SerializeField] public float bubbleSpeed;
@@ -18,9 +19,14 @@ public class BubbleController : MonoBehaviour
     private float tempYVelocity;
     [SerializeField] private float forcedYVelocity;
 
+    //Bubble GetStuck
+    [SerializeField] ParticleSystem bubbleCollisionPS;
+    private int numCollisions = 0;
+
+
     //StuckBubble
     public bool isStuck;
-    [SerializeField] Sprite dirtyBubbleSprite;
+    [SerializeField] private Sprite dirtyBubbleSprite;
     private List<Collision2D> connectedList = new List<Collision2D>();
 
 
@@ -40,14 +46,14 @@ public class BubbleController : MonoBehaviour
 
         foreach (var col in connectedList)
         {
-            //if (col.gameObject.CompareTag("DirtyBubble"))
-            //{
-            //    convertToDirty();
-            //}
-            if (col.gameObject.CompareTag("DirtyBubble") || col.gameObject.tag == "DirtySurface")
+            if (col.gameObject.CompareTag("DirtyBubble"))
             {
                 convertToDirty();
             }
+            //if (col.gameObject.CompareTag("DirtyBubble") || col.gameObject.tag == "DirtySurface")
+            //{
+            //    convertToDirty();
+            //}
         }
 
     }
@@ -85,10 +91,12 @@ public class BubbleController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
+        numCollisions++;
+
         //Create fixed joint with sticky surface when collide with sticky surface
         if (col.gameObject.tag == "StickySurface")
         {
-
+            playCleanCollisionPS();
             createFixedJoint(col);
         }
 
@@ -110,13 +118,21 @@ public class BubbleController : MonoBehaviour
         //Create hinge with bubble when collide with other healthy bubble
         if (col.gameObject.tag == "HealthyBubble")
         {
+            playCleanCollisionPS();
             createHingeJoint(col);
+        }
+    }
+
+    private void playCleanCollisionPS()
+    {
+        if (numCollisions == 1)
+        {
+            bubbleCollisionPS.Play();
         }
     }
 
     private void createFixedJoint(Collision2D col)
     {
-
         isStuck = true;
         FixedJoint2D fixedJoint = gameObject.AddComponent<FixedJoint2D>();
 
@@ -129,7 +145,11 @@ public class BubbleController : MonoBehaviour
 
     private void createHingeJoint(Collision2D col)
     {
-        connectedList.Add(col);
+        if (!connectedList.Contains(col))
+        {
+            connectedList.Add(col);
+        }
+
         isStuck = true;
         HingeJoint2D hingeJoint = gameObject.AddComponent<HingeJoint2D>();
 
@@ -154,6 +174,8 @@ public class BubbleController : MonoBehaviour
         rb2d.velocity = new Vector2(movement, rb2d.velocity.y);
 
     }
+
+
 
 
 }
