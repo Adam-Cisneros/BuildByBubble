@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -61,6 +62,15 @@ public class PlayerController : MonoBehaviour
         {
             SFXManager.Instance.PlaySFX("VictorySFX");
             goalReached = true;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (!(col.gameObject.tag == "HealthyBubble") && !(goalReached))
+        {
+            Scene currentScene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(currentScene.name);
         }
     }
 

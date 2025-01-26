@@ -2152,7 +2152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubbleController: {fileID: 0}
-  maxGeneratedBubbles: 10
+  maxGeneratedBubbles: 2
   bubblePrefab: {fileID: 2724066605408935107, guid: 1a104470f47f5184dafd885aa74e4e0d, type: 3}
   bubbleSpawnPoint: {fileID: 1774975147}
   bubbleSpawnDelay: 0.5
