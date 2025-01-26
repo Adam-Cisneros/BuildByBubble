@@ -2131,6 +2131,7 @@ GameObject:
   - component: {fileID: 727907581}
   - component: {fileID: 727907583}
   - component: {fileID: 727907584}
+  - component: {fileID: 727907585}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2207,6 +2208,39 @@ MonoBehaviour:
   confettiPS: {fileID: 1015066211}
   winTitle: {fileID: 435031549}
   nextLevelButton: {fileID: 1044949261}
+--- !u!114 &727907585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727907580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59dc0a3d3be61de45bc59d886668bd61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffects:
+  - name: PhaseStartSFX
+    clip: {fileID: 8300000, guid: ae48d8b4776aaf347b1d6fbcd8d74720, type: 3}
+  - name: DirtyBubbleSFX
+    clip: {fileID: 8300000, guid: 30933732286d7b446955f084b24d91ec, type: 3}
+  - name: HealthyBubbleSFX
+    clip: {fileID: 8300000, guid: 34ca58bc4744e5943af0aed12a1ec0d2, type: 3}
+  - name: NextLevelSFX
+    clip: {fileID: 8300000, guid: b69822cf5c2c82f4d914038e88421568, type: 3}
+  - name: CasualBubbleLoop
+    clip: {fileID: 8300000, guid: dd33dd440a9bd614cb03be0332aece63, type: 3}
+  - name: CasualRunLoop
+    clip: {fileID: 8300000, guid: e8a1a316a7163af40b0663ddbdb94bb6, type: 3}
+  - name: BubbleBubbleBubbleLoop
+    clip: {fileID: 8300000, guid: 180a456f32105264680ce181b1a014ab, type: 3}
+  - name: VictorySFX
+    clip: {fileID: 8300000, guid: 24963734b9c698a46bee739f5e1764a4, type: 3}
+  - name: DeathSFX
+    clip: {fileID: 8300000, guid: bb4de1399a9c1ab46b0d641a2806491a, type: 3}
+  - name: JumpSFX
+    clip: {fileID: 8300000, guid: 2eda6917a4c651e4ea7f5a8d71ba2f37, type: 3}
 --- !u!1 &1015066208
 GameObject:
   m_ObjectHideFlags: 0
@@ -7835,7 +7869,7 @@ GameObject:
   - component: {fileID: 1749756896}
   - component: {fileID: 1749756895}
   m_Layer: 5
-  m_Name: StartBubblePhaseText
+  m_Name: NextPhaseText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
