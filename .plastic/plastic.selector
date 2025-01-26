@@ -1,4 +1,0 @@
-repository "BuildByBubble@BrodandoPersonal@cloud"
-  path "/"
-    br "/main"
-    co "/main"
