@@ -23,6 +23,7 @@ public class GenerateBubbles : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        dropper.GetComponent<Animator>().enabled = false;
         bubblePhaseOver = false;
         bubblesLeftText.text = $"{maxGeneratedBubbles}";
     }
@@ -35,11 +36,10 @@ public class GenerateBubbles : MonoBehaviour
 
     public IEnumerator bubbleGameLoop()
     {
-
+        dropper.GetComponent<Animator>().enabled = true;
         while (BubbleController.numBubbles < maxGeneratedBubbles)
         {
             yield return StartCoroutine(createBubble());
-
         }
         bubblePhaseOver = true;
     }
