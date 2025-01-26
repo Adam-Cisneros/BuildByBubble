@@ -19,7 +19,7 @@ public class GameLoop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        BubbleController.numBubbles = 0;
         StartCoroutine(MainGameLoop());   
     }
 
