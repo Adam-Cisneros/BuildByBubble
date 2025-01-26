@@ -23,7 +23,6 @@ public class GenerateBubbles : MonoBehaviour
     void Start()
     {
         bubblePhaseOver = false;
-
         bubblesLeftText.text = $"{maxGeneratedBubbles}";
     }
 
