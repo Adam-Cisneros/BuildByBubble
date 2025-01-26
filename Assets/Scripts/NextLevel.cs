@@ -1,0 +1,69 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+public class NextLevel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+{
+    [SerializeField] string lastLevelName; 
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        transform.localScale = new Vector3(1f, 1f, 1f) * 1.05f;
+
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        transform.localScale = new Vector3(1f, 1f, 1f);
+    }
+
+    public void OnButtonPressed()
+    {
+        Debug.Log("Next Level");
+        if (SceneManager.GetActiveScene().name == lastLevelName)
+        {
+            Debug.Log("Do something special");
+        }
+        else
+        {
+            LoadNextLevel();
+        }
+    }
+
+    public void LoadNextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //string currentSceneName = SceneManager.GetActiveScene().name;
+
+        //if (currentSceneName.StartsWith("Level"))
+        //{
+        //    string levelNumberStr = currentSceneName.Substring("Level".Length);
+
+        //    if (int.TryParse(levelNumberStr, out int currentLevelNumber))
+        //    {
+        //        int nextLevelNumber = currentLevelNumber + 1;
+
+        //        string nextSceneName = "Level" + nextLevelNumber;
+
+                
+
+        //        SceneManager.LoadScene(nextSceneName);
+        //    }
+        //}
+    }
+}

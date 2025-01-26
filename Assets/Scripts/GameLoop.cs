@@ -12,7 +12,7 @@ public class GameLoop : MonoBehaviour
     [SerializeField] private SpriteRenderer goalSpriteRenderer;
     [SerializeField] private ParticleSystem confettiPS;
     [SerializeField] private WinTitle winTitle;
-    //Reference button to show and hide it
+    [SerializeField] private GameObject nextLevelButton;
 
     private bool isPositionLocked = true;
 
@@ -31,6 +31,7 @@ public class GameLoop : MonoBehaviour
 
     private IEnumerator MainGameLoop()
     {
+        nextLevelButton.SetActive(false);
         SetGoalAlpha(0.5f);
 
         //Bubble Phase
@@ -65,6 +66,7 @@ public class GameLoop : MonoBehaviour
         //Player wins
         confettiPS.Play();
         yield return new WaitForSeconds(1f);
+        nextLevelButton.SetActive(true);
         winTitle.StartShaking();
 
     }
