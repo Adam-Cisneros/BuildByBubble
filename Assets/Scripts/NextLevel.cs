@@ -34,14 +34,17 @@ public class NextLevel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnButtonPressed()
     {
-        Debug.Log("Next Level");
+        SFXManager.Instance.PlaySFX("NextLevelSFX");
         if (SceneManager.GetActiveScene().name == lastLevelName)
         {
+            SFXManager.Instance.StopLoopingMusic();
             Debug.Log("Do something special");
         }
         else
         {
+            SFXManager.Instance.StopLoopingMusic();
             LoadNextLevel();
+
         }
     }
 
