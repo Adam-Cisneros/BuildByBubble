@@ -46,10 +46,7 @@ public class BubbleController : MonoBehaviour
 
         if (gameObject.tag == "DirtyBubble")
         {
-            foreach (var elem in chain)
-            {
-                elem.GetComponent<BubbleController>().convertToDirty();
-            }
+            dirtyChainReaction();
         }
     }
 
@@ -68,7 +65,7 @@ public class BubbleController : MonoBehaviour
             currentHorizontalInput = Mathf.MoveTowards(currentHorizontalInput, 0, accelerationRate * Time.deltaTime);
 
         }
-
+        
 
         if (Input.GetKeyDown(KeyCode.S))
         {
@@ -93,6 +90,11 @@ public class BubbleController : MonoBehaviour
         //Create fixed joint with sticky surface when collide with sticky surface
         if (col.gameObject.tag == "StickySurface")
         {
+            if (gameObject.tag == "DirtyBubble")
+            {
+                spriteRenderer.sprite = dirtyBubbleSprite;
+            }
+
             SFXManager.Instance.PlaySFX("HealthyBubbleSFX");
             playCleanCollisionPS();
             createFixedJoint(col);
@@ -101,32 +103,43 @@ public class BubbleController : MonoBehaviour
         //Create hinge with bubble when collide
         if (col.gameObject.tag == "DirtySurface")
         {
+            spriteRenderer.sprite = dirtyBubbleSprite;
+
             createFixedJoint(col);
             chain.Add(gameObject);
-            foreach (var elem in chain)
-            {
-                elem.GetComponent<BubbleController>().convertToDirty();
-            }
+            dirtyChainReaction();
         }
 
         //Create hinge with bubble when collide
         if (col.gameObject.tag == "DirtyBubble")
         {
+            spriteRenderer.sprite = dirtyBubbleSprite;
+
             createHingeJoint(col);
-            foreach (var elem in chain)
-            {
-                elem.GetComponent<BubbleController>().convertToDirty();
-            }
+            dirtyChainReaction();
         }
 
         //Create hinge with bubble when collide with other healthy bubble
         if (col.gameObject.tag == "HealthyBubble")
         {
+            if(gameObject.tag == "DirtyBubble")
+            {
+                spriteRenderer.sprite = dirtyBubbleSprite;
+            }
+
             SFXManager.Instance.PlaySFX("HealthyBubbleSFX");
             playCleanCollisionPS();
             createHingeJoint(col);
             chain.Add(col.gameObject);
             chain.Add(gameObject);
+        }
+    }
+
+    private void dirtyChainReaction()
+    {
+        foreach (var elem in chain)
+        {
+            elem.GetComponent<BubbleController>().convertToDirty();
         }
     }
 
@@ -165,9 +178,13 @@ public class BubbleController : MonoBehaviour
 
     public void convertToDirty()
     {
-        SFXManager.Instance.PlaySFX("DirtyBubbleSFX");
-        gameObject.tag = "DirtyBubble";
-        spriteRenderer.sprite = dirtyBubbleSprite;
+        if (gameObject.tag != "DirtyBubble")
+        {
+            SFXManager.Instance.PlaySFX("DirtyBubbleSFX");
+            gameObject.tag = "DirtyBubble";
+            spriteRenderer.sprite = dirtyBubbleSprite;
+        }
+
     }
 
 

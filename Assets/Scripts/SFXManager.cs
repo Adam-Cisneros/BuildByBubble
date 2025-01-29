@@ -9,14 +9,15 @@ public class SFXManager : MonoBehaviour
     [System.Serializable]
     public class SFXEntry
     {
-        public string name;  
-        public AudioClip clip;    
+        public string name;
+        public AudioClip clip;
     }
 
     [SerializeField] private List<SFXEntry> soundEffects = new List<SFXEntry>();
     private Dictionary<string, AudioClip> sfxDictionary;
     private AudioSource audioSource;
     private AudioSource musicSource;
+
 
     void Start()
     {
@@ -33,7 +34,7 @@ public class SFXManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); 
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -67,12 +68,13 @@ public class SFXManager : MonoBehaviour
         }
     }
 
+
     public void PlayLoopingMusic(string name, float startTime = 0f)
     {
         if (sfxDictionary.TryGetValue(name, out AudioClip clip))
         {
             musicSource.clip = clip;
-            musicSource.loop = true; 
+            musicSource.loop = true;
             musicSource.time = startTime;
             musicSource.Play();
         }
@@ -90,4 +92,5 @@ public class SFXManager : MonoBehaviour
         }
     }
 }
+
 

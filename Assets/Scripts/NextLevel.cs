@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -43,6 +44,7 @@ public class NextLevel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         }
         else
         {
+            GameLoop.sceneReloads = 0;
             SFXManager.Instance.StopLoopingMusic();
             LoadNextLevel();
 
@@ -52,22 +54,6 @@ public class NextLevel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public void LoadNextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        //string currentSceneName = SceneManager.GetActiveScene().name;
 
-        //if (currentSceneName.StartsWith("Level"))
-        //{
-        //    string levelNumberStr = currentSceneName.Substring("Level".Length);
-
-        //    if (int.TryParse(levelNumberStr, out int currentLevelNumber))
-        //    {
-        //        int nextLevelNumber = currentLevelNumber + 1;
-
-        //        string nextSceneName = "Level" + nextLevelNumber;
-
-                
-
-        //        SceneManager.LoadScene(nextSceneName);
-        //    }
-        //}
     }
 }
