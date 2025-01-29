@@ -57,11 +57,11 @@ public class GameLoop : MonoBehaviour
         nextLevelButton.SetActive(false);
         SetGoalAlpha(0.4f);
 
+        //Show bubble amount
         if (sceneReloads == 1)
         {
             yield return new WaitForSeconds(1f);
             yield return StartCoroutine(displayBubbleAmount.countBubbles());
-            yield return new WaitForSeconds(0.5f);
         }
 
         //Bubble Phase
