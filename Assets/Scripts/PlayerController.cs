@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleJumping()
     {
-        isGrounded = Physics2D.OverlapCircle(transform.position, groundCheckRadius, groundLayer);
+        isGrounded = Physics2D.BoxCast(transform.position + new Vector3(0, -0.5f, 0), new Vector2(0.5f, 0.3f), 0f, Vector2.down, 0f, groundLayer);
 
         if (isGrounded && Input.GetKeyDown(KeyCode.W))
         {
@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Goal")
+        if (col.gameObject.tag == "Goal" && !goalReached)
         {
             SFXManager.Instance.PlaySFX("VictorySFX");
             goalReached = true;

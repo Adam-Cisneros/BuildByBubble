@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3525087651105659772
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7789695928315866674}
+  - component: {fileID: 3931900012452595887}
+  - component: {fileID: 1642918581721325099}
+  - component: {fileID: 7715719938351387034}
+  - component: {fileID: 1109080674506554174}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7789695928315866674
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3525087651105659772}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.055201024, y: 0.30116674, z: -0.070461445}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3931900012452595887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3525087651105659772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e936cb7ffe48bb74385a5d54b28a0a1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxGeneratedBubbles: 6
+  bubblePrefab: {fileID: 2724066605408935107, guid: 1a104470f47f5184dafd885aa74e4e0d, type: 3}
+  bubbleSpawnPoint: {fileID: 0}
+  bubbleSpawnDelay: 0.5
+  dropper: {fileID: 0}
+  bubblesLeftText: {fileID: 0}
+--- !u!114 &1642918581721325099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3525087651105659772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be40bf7a3f6c94c488b26e0745d3b2fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phaseTitleText: {fileID: 0}
+  currencyTextMaxSize: 115
+  currencyTextMinSize: 0
+  titleText: Build by Bubble
+--- !u!114 &7715719938351387034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3525087651105659772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86dee628196d08649bc3132d5e650010, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generateBubbles: {fileID: 3931900012452595887}
+  displayBubbleAmount: {fileID: 0}
+  phaseTitle: {fileID: 1642918581721325099}
+  winTitle: {fileID: 0}
+  nextLevelButton: {fileID: 0}
+  playerPrefab: {fileID: 6919667018651551492, guid: 6c983d652a29b464184ab328cc295b6a, type: 3}
+  playerSpawnPoint: {fileID: 0}
+  goalSpriteRenderer: {fileID: 0}
+  confettiPS: {fileID: 0}
+  tutorialPhase: {fileID: 0}
+--- !u!114 &1109080674506554174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3525087651105659772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2930ffc85b365b488b00b4620b49bbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
