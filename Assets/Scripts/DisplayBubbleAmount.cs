@@ -47,7 +47,7 @@ public class DisplayBubbleAmount : MonoBehaviour
         float elapsedTime = 0f;
         float growTime = 0.2f;  
         float shrinkTime = 0.1f;
-        float countTime = 0.3f;
+        float countTime = 0.2f;
 
         // Growing
         while (elapsedTime < growTime)

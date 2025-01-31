@@ -3312,11 +3312,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2379544703786718448, guid: 5f2179e7b2224de46b270e3c4a0a25f8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.53
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2379544703786718448, guid: 5f2179e7b2224de46b270e3c4a0a25f8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.74
+      value: 0.52
       objectReference: {fileID: 0}
     - target: {fileID: 2379544703786718448, guid: 5f2179e7b2224de46b270e3c4a0a25f8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3426,7 +3426,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 556869347226823266, guid: 8871cd91e891df34494fac39ec0bcd03, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 556869347226823266, guid: 8871cd91e891df34494fac39ec0bcd03, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3501,10 +3501,6 @@ PrefabInstance:
       propertyPath: bubbleSpawnPoint
       value: 
       objectReference: {fileID: 1774975147}
-    - target: {fileID: 3931900012452595887, guid: 30b90540ce685a747859d3e34331ad99, type: 3}
-      propertyPath: maxGeneratedBubbles
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7715719938351387034, guid: 30b90540ce685a747859d3e34331ad99, type: 3}
       propertyPath: winTitle
       value: 
@@ -3525,6 +3521,10 @@ PrefabInstance:
       propertyPath: playerSpawnPoint
       value: 
       objectReference: {fileID: 483933351}
+    - target: {fileID: 7715719938351387034, guid: 30b90540ce685a747859d3e34331ad99, type: 3}
+      propertyPath: selectLevelButton
+      value: 
+      objectReference: {fileID: 7240764891338188164}
     - target: {fileID: 7715719938351387034, guid: 30b90540ce685a747859d3e34331ad99, type: 3}
       propertyPath: goalSpriteRenderer
       value: 
@@ -3679,6 +3679,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8589bff2abdd70641aadd58de639d8ff, type: 3}
+--- !u!1 &7240764891338188164 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4020769830639434726, guid: 8589bff2abdd70641aadd58de639d8ff, type: 3}
+  m_PrefabInstance: {fileID: 7240764891338188163}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8960578162979010567
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e936cb7ffe48bb74385a5d54b28a0a1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxGeneratedBubbles: 6
+  maxGeneratedBubbles: 4
   bubblePrefab: {fileID: 2724066605408935107, guid: 1a104470f47f5184dafd885aa74e4e0d, type: 3}
   bubbleSpawnPoint: {fileID: 0}
   bubbleSpawnDelay: 0.5
@@ -86,6 +86,7 @@ MonoBehaviour:
   phaseTitle: {fileID: 1642918581721325099}
   winTitle: {fileID: 0}
   nextLevelButton: {fileID: 0}
+  selectLevelButton: {fileID: 0}
   playerPrefab: {fileID: 6919667018651551492, guid: 6c983d652a29b464184ab328cc295b6a, type: 3}
   playerSpawnPoint: {fileID: 0}
   goalSpriteRenderer: {fileID: 0}

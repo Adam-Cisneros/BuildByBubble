@@ -10,9 +10,12 @@ public class PlayerController : MonoBehaviour
     //Player Movement
     [SerializeField] private float moveSpeed = 5f;  
     [SerializeField] private float jumpForce = 10f;
-    [SerializeField] private float groundCheckRadius = 0.2f; 
     [SerializeField] private LayerMask groundLayer;  
     [SerializeField] private bool isGrounded;
+
+    [SerializeField] private float jumpBoxSizeY;
+    [SerializeField] private float jumpBoxSizeX;
+    [SerializeField] private float jumpBoxOffsetY;
 
     public bool goalReached = false;
 
@@ -42,13 +45,28 @@ public class PlayerController : MonoBehaviour
 
     private void HandleJumping()
     {
-        isGrounded = Physics2D.BoxCast(transform.position + new Vector3(0, -0.5f, 0), new Vector2(0.5f, 0.3f), 0f, Vector2.down, 0f, groundLayer);
+        //isGrounded = Physics2D.BoxCast(transform.position + new Vector3(0, -0.5f, 0), new Vector2(0.5f, 0.3f), 0f, Vector2.down, 0f, groundLayer);
+        isGrounded = Physics2D.BoxCast(transform.position + new Vector3(0, jumpBoxOffsetY, 0), new Vector2(jumpBoxSizeX, jumpBoxSizeY), 0f, Vector2.down, 0f, groundLayer);
 
         if (isGrounded && Input.GetKeyDown(KeyCode.W))
         {
             SFXManager.Instance.PlaySFX("JumpSFX");
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red; // Set Gizmo color to red
+
+        // Define the ground check box position (offset downward)
+        Vector2 boxPosition = (Vector2)transform.position + new Vector2(0, jumpBoxOffsetY); // Adjust as needed
+
+        // Define the size of the box
+        Vector2 boxSize = new Vector2(jumpBoxSizeX, jumpBoxSizeY); // Adjust width and height as needed
+
+        // Draw the wireframe rectangle
+        Gizmos.DrawWireCube(boxPosition, boxSize);
     }
 
     public void resetVelocity()

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class NextLevel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] string lastLevelName; 
+    [SerializeField] public string lastLevelName; 
 
     // Start is called before the first frame update
     void Start()
@@ -39,21 +39,14 @@ public class NextLevel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if (SceneManager.GetActiveScene().name == lastLevelName)
         {
             SFXManager.Instance.StopLoopingMusic();
-            LoadNextLevel();
-            Time.timeScale = 0f;
+            LoadLevel.LoadNextLevel();
         }
         else
         {
             GameLoop.sceneReloads = 0;
             SFXManager.Instance.StopLoopingMusic();
-            LoadNextLevel();
+            LoadLevel.LoadNextLevel();
 
         }
-    }
-
-    public void LoadNextLevel()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-
     }
 }

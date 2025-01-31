@@ -17,6 +17,7 @@ public class GameLoop : MonoBehaviour
     [SerializeField] private PhaseTitle phaseTitle;
     [SerializeField] private WinTitle winTitle;
     [SerializeField] private GameObject nextLevelButton;
+    [SerializeField] private GameObject selectLevelButton;
 
 
     [SerializeField] private GameObject playerPrefab;
@@ -65,6 +66,7 @@ public class GameLoop : MonoBehaviour
         displayBubbleAmount.resetBubbleAmountText();
         playerSpawnPoint.SetActive(true);
         nextLevelButton.SetActive(false);
+        selectLevelButton.SetActive(false);
         SetGoalAlpha(0.4f);
 
 
@@ -113,7 +115,8 @@ public class GameLoop : MonoBehaviour
         //Lock player in place
         while (isPositionLocked)
         {
-            player.transform.position = playerSpawnPointTransform.position;  
+            player.transform.position = playerSpawnPointTransform.position;
+            player.GetComponent<PlayerController>().resetVelocity();
 
             if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S))
             {
@@ -133,7 +136,10 @@ public class GameLoop : MonoBehaviour
         confettiPS.Play();
         yield return new WaitForSeconds(1f);
         SFXManager.Instance.PlayLoopingMusic("BubbleBubbleBubbleLoop", 1f);
-        nextLevelButton.SetActive(true);
+        LoadLevel.UnlockNextLevel();
+        //only show next button if not last level
+        nextLevelButton.SetActive(!(SceneManager.GetActiveScene().name == nextLevelButton.GetComponent<NextLevel>().lastLevelName));
+        selectLevelButton.SetActive(true);
         winTitle.StartShaking();
     }
 

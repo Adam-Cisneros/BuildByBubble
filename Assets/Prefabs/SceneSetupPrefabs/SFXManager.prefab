@@ -69,3 +69,5 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: d1b67c72997c5fd47bde08137c1cc54f, type: 3}
   - name: MaxBubblesSFX
     clip: {fileID: 8300000, guid: a1d7795a94c53df4bb5b690816e92465, type: 3}
+  - name: CasualBassLoop
+    clip: {fileID: 8300000, guid: 2eb16dbcf17f0a74a87a110a716f4712, type: 3}
