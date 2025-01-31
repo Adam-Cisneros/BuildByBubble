@@ -12,7 +12,7 @@ public class LevelSelectManager : MonoBehaviour
         //{
         //    Debug.Log($"Key: {kvp.Key}, Value: {kvp.Value}");
         //}
-        //SFXManager.Instance.PlayLoopingMusic("CasualBassLoop", 1f);
+        SFXManager.Instance.PlayLoopingMusic("CasualBassLoop", 1f);
     }
 
     // Update is called once per frame
