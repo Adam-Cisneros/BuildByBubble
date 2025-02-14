@@ -102,12 +102,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb2d: {fileID: 7036627037801558412}
   moveSpeed: 4
-  jumpForce: 5
-  groundCheckRadius: 0.6
+  jumpForce: 4.8
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   isGrounded: 0
+  jumpBoxSizeY: 0.87
+  jumpBoxSizeX: 0.66
+  jumpBoxOffsetY: -0.2
   goalReached: 0
 --- !u!50 &7036627037801558412
 Rigidbody2D:

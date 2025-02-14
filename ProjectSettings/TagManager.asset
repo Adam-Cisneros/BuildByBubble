@@ -55,3 +55,6 @@ TagManager:
   - name: Indicators
     uniqueID: 2955141193
     locked: 0
+  - name: GameObjectUI
+    uniqueID: 2067606733
+    locked: 0
