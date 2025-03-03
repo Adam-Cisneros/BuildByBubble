@@ -120,7 +120,7 @@ public class BubbleController : MonoBehaviour
         }
 
         //Create hinge with bubble when collide with other healthy bubble
-        if (col.gameObject.tag == "HealthyBubble")
+        if (col.gameObject.tag == "HealthyBubble" || col.gameObject.tag == "JmpBubble")
         {
             if(gameObject.tag == "DirtyBubble")
             {

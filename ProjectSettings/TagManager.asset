@@ -9,6 +9,7 @@ TagManager:
   - DirtySurface
   - DirtyBubble
   - Goal
+  - JmpBubble
   layers:
   - Default
   - TransparentFX

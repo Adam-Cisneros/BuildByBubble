@@ -3654,6 +3654,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1774975145}
     - target: {fileID: 3931900012452595887, guid: 30b90540ce685a747859d3e34331ad99, type: 3}
+      propertyPath: bubblePrefab
+      value: 
+      objectReference: {fileID: 7803500673285437060, guid: 793ebd564e2a04127a16a2a9bf03ffd1, type: 3}
+    - target: {fileID: 3931900012452595887, guid: 30b90540ce685a747859d3e34331ad99, type: 3}
       propertyPath: bubblesLeftText
       value: 
       objectReference: {fileID: 1685618303}

@@ -85,7 +85,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (!(col.gameObject.tag == "HealthyBubble") && !(goalReached))
+        if (col.gameObject.tag == "JmpBubble" && !(goalReached))
+        {
+            SFXManager.Instance.PlaySFX("JumpSFX");
+            rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce*2);
+        }
+        else if (!(col.gameObject.tag == "HealthyBubble") && !(goalReached))
         {
             SFXManager.Instance.PlaySFX("DeathSFX");
             SFXManager.Instance.StopLoopingMusic();
