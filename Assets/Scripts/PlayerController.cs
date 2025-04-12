@@ -31,16 +31,17 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement()
     {
-        float horizontalInput = 0f;
-        if (Input.GetKey(KeyCode.A))
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float horizontalDirection = 0f;
+        if (Input.GetKey(KeyCode.A) || horizontalInput < -0.1f)
         {
-            horizontalInput = -1f;  
+            horizontalDirection = -1f;  
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D) || horizontalInput > 0.1f)
         {
-            horizontalInput = 1f;  
+            horizontalDirection = 1f;  
         }
-        rb2d.velocity = new Vector2(horizontalInput * moveSpeed, rb2d.velocity.y);
+        rb2d.velocity = new Vector2(horizontalDirection * moveSpeed, rb2d.velocity.y);
     }
 
     private void HandleJumping()
@@ -48,7 +49,7 @@ public class PlayerController : MonoBehaviour
         //isGrounded = Physics2D.BoxCast(transform.position + new Vector3(0, -0.5f, 0), new Vector2(0.5f, 0.3f), 0f, Vector2.down, 0f, groundLayer);
         isGrounded = Physics2D.BoxCast(transform.position + new Vector3(0, jumpBoxOffsetY, 0), new Vector2(jumpBoxSizeX, jumpBoxSizeY), 0f, Vector2.down, 0f, groundLayer);
 
-        if (isGrounded && Input.GetKeyDown(KeyCode.W))
+        if (isGrounded && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.JoystickButton0)))
         {
             SFXManager.Instance.PlaySFX("JumpSFX");
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);

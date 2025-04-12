@@ -117,8 +117,9 @@ public class GameLoop : MonoBehaviour
         {
             player.transform.position = playerSpawnPointTransform.position;
             player.GetComponent<PlayerController>().resetVelocity();
+            float horizontalInput = Input.GetAxis("Horizontal");
 
-            if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S))
+            if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || horizontalInput != 0f)
             {
                 isPositionLocked = false;  
             }

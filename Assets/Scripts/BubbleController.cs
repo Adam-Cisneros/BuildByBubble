@@ -17,6 +17,7 @@ public class BubbleController : MonoBehaviour
     [SerializeField] public float bubbleSpeed;
     [SerializeField] private float accelerationRate;
     private float tempYVelocity;
+    private float previousVerticalInput;
     [SerializeField] private float forcedYVelocity;
 
     //Bubble GetStuck
@@ -52,11 +53,13 @@ public class BubbleController : MonoBehaviour
 
     private void getMovement()
     {
-        if (Input.GetKey(KeyCode.A))
+        float horizontalInput = Input.GetAxis("Horizontal");
+
+        if (Input.GetKey(KeyCode.A) || horizontalInput < -0.25f)
         {
             currentHorizontalInput = Mathf.MoveTowards(currentHorizontalInput, -1f, accelerationRate * Time.deltaTime);
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D) || horizontalInput > 0.25f)
         {
             currentHorizontalInput = Mathf.MoveTowards(currentHorizontalInput, 1f, accelerationRate * Time.deltaTime);
         }
@@ -65,17 +68,31 @@ public class BubbleController : MonoBehaviour
             currentHorizontalInput = Mathf.MoveTowards(currentHorizontalInput, 0, accelerationRate * Time.deltaTime);
 
         }
-        
 
-        if (Input.GetKeyDown(KeyCode.S))
+
+        float verticalInput = Input.GetAxis("Vertical");
+
+        //if (Input.GetKeyDown(KeyCode.S) || verticalInput < -0.5f)
+        //{
+        //    tempYVelocity = rb2d.velocity.y;
+        //    rb2d.velocity = new Vector2(movement, forcedYVelocity);
+        //}
+        //else if (Input.GetKeyUp(KeyCode.S) || verticalInput > -0.5f)
+        //{
+        //    rb2d.velocity = new Vector2(movement, tempYVelocity);
+        //}
+
+        if (Input.GetKeyDown(KeyCode.S) || (verticalInput < -0.5f && previousVerticalInput >= -0.5f))
         {
             tempYVelocity = rb2d.velocity.y;
             rb2d.velocity = new Vector2(movement, forcedYVelocity);
         }
-        else if (Input.GetKeyUp(KeyCode.S))
+        else if (Input.GetKeyUp(KeyCode.S) || (verticalInput >= -0.5f && previousVerticalInput < -0.5f))
         {
             rb2d.velocity = new Vector2(movement, tempYVelocity);
         }
+
+        previousVerticalInput = verticalInput;
 
         movement = currentHorizontalInput * bubbleSpeed;
     }
