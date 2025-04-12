@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
         //isGrounded = Physics2D.BoxCast(transform.position + new Vector3(0, -0.5f, 0), new Vector2(0.5f, 0.3f), 0f, Vector2.down, 0f, groundLayer);
         isGrounded = Physics2D.BoxCast(transform.position + new Vector3(0, jumpBoxOffsetY, 0), new Vector2(jumpBoxSizeX, jumpBoxSizeY), 0f, Vector2.down, 0f, groundLayer);
 
-        if (isGrounded && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.JoystickButton0)))
+        if (isGrounded && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.JoystickButton0) || Input.GetKeyDown(KeyCode.JoystickButton1)))
         {
             SFXManager.Instance.PlaySFX("JumpSFX");
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);

@@ -19,7 +19,10 @@ public class NextLevel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Joystick1Button0) || Input.GetKeyDown(KeyCode.Joystick1Button1))
+        {
+            OnButtonPressed();
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
